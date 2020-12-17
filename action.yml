@@ -1,0 +1,40 @@
+name: 'Library Release Action'
+description: 'It is used to bump current library's version and publish a new package and release tag.'
+author: 'tronku'
+branding:
+  icon: 'box'
+  color: 'yellow'
+
+inputs:
+  github_token:
+    description: 'GitHub token to access your repo'
+    required: true
+
+  default_branch:
+    description: 'Default branch of the repo'
+    required: false
+    default: 'development'
+
+  main_branch:
+    description: 'Main branch of the repo for release'
+    required: false
+    default: 'master'
+
+  version_file_path:
+    description: 'Path of version.properties file'
+    required: true
+
+  release_tag:
+    description: 'Should release tag or not'
+    required: true
+    default: false  
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.github_token }}
+    - ${{ inputs.default_branch }}
+    - ${{ inputs.main_branch }}    
+    - ${{ inputs.version_file_path }}
+    - ${{ inputs.release_tag }}
