@@ -1,4 +1,4 @@
-name: 'Library Release Action'
+name: 'Library Release tronku'
 description: 'It is used to bump current library's version and publish a new package and release tag.'
 author: 'tronku'
 branding:
